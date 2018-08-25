@@ -14,7 +14,7 @@ function Books(props) {
 							<div className="book-cover" style={{width: 128, height: 193, backgroundImage: `url("${book.imageLinks && book.imageLinks.thumbnail}")`}}></div>
 							<ShelfMove
 								book={book}
-								onChangeShelf={moveBook}
+								onmoveBook={moveBook}
 							/>
 						</div>
 						<div className="book-title">{book.title}</div>

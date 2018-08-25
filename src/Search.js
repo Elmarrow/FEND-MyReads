@@ -8,7 +8,7 @@ import Books from "./Books";
 class Search extends Component {
 	static propTypes = {
 		myBooks: PropTypes.array.isRequired,
-		changeShelf: PropTypes.func.isRequired
+		moveBook: PropTypes.func.isRequired
 	}
 
 	state = {
@@ -36,13 +36,8 @@ class Search extends Component {
 	}
 
 	render() {
-		const {
-			query,
-			books
-		} = this.state;
-		const {
-			changeShelf
-		} = this.props;
+		const {query, books} = this.state;
+		const {moveBook} = this.props;
 
 		return (<div className = "search-books">
 			<div className = "search-books-bar">
@@ -58,7 +53,7 @@ class Search extends Component {
 			<div className = "search-books-results" >
 				<ol className = "books-grid" >
 					<Books books = {books}
-						moveBook = {changeShelf}
+						moveBook = {moveBook}
 					/> 
 				</ol> 
 			</div>

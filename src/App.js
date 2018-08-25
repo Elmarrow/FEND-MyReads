@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import BookListing from "./BookListing";
@@ -13,7 +13,6 @@ class BooksApp extends React.Component {
 	componentDidMount() {
 		BooksAPI.getAll()
 			.then((books)=>{this.setState({books})
-				.catch(response => console.error("Unable to get booklist from server", response));
 			});
 	}
 
@@ -24,26 +23,29 @@ class BooksApp extends React.Component {
 					books: state.books.filter(b => b.id !== book.id).concat([ book ])
 				}));
 				})
-				.catch(response => console.error(`Unable to set shelf for ${book.id} to ${shelf}`, response));
 		}
 	}
 
 	render() {
 		return (
 			<div className="app">
+				<Route exact path='/' render={() => (
+					<div className="list-books">
+					<BookListing
+					moveBook={this.moveBook}	
+					books={this.state.books}	
+					/>
+					<div className="open-search">
+						<Link to="/search">Add a book</Link>
+					</div>
+					</div>
+				)}/>
 				<Route path='/search' render={() => (
 					<Search
-						myBooks={this.state.books}
-						moveBook={this.moveBook}
+					moveBook={this.moveBook}	
+					myBooks={this.state.books}
 					/>
-				)}/>
-
-				<Route exact path='/' render={() => (
-					<BookListing
-						books={this.state.books}
-						moveBook={this.moveBook}
-					/>
-				)}/>
+				)}/>	
 			</div>
 		);
 	}
