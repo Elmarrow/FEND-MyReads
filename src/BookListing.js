@@ -45,7 +45,7 @@ function BookListing(props) {
 	);
 }
   
-ListBooks.propTypes = {
+BookListing.propTypes = {
 	books: PropTypes.array.isRequired,
 	moveBook: PropTypes.func.isRequired
 };
