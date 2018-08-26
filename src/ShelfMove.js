@@ -13,7 +13,7 @@ function ShelfMove(props) {
 				<option value="none" disabled>Move to...</option>
 				<option value="currentlyReading">Currently Reading</option>
 				<option value="wantingToRead">Wanting to Read</option>
-				<option value="alreadyRead">Read</option>
+				<option value="alreadyRead">Already Read</option>
 				<option value="none">None</option>
 			</select>
 		</div>

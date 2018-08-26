@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Bookshelf from "./Bookshelf";
+import Books from "./Books";
 
 const Bookshelves = [
 	{
@@ -28,7 +28,7 @@ function BookListing(props) {
 			<div className="list-books-content" aria-label="A list of the books that I want to read, that I am reading and that I have already read">
 				<div>
 					{Bookshelves.map((bookshelf) => (
-						<Bookshelf
+						<Books
 							key={bookshelf.id}
 							title={bookshelf.title}
 							books={books.filter((book) => book.shelf === bookshelf.id)}
