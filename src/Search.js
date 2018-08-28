@@ -17,13 +17,12 @@ class Search extends Component {
 	}
 
 	updateQuery = (query) => {
-		query = query.trim();
 		this.setState({
 			query,
 			books: []
 		});
 		if (query.length > 0) {
-			BooksAPI.search(query).then((books) => {
+			BooksAPI.search(query.trim()).then((books) => {
 				if (Array.isArray(books)) {
 					this.setState({
 						books: books.map((book) => {
@@ -54,6 +53,7 @@ class Search extends Component {
 				<ol className = "books-grid" >
 					<Books books = {books}
 						moveBook = {moveBook}
+						title = {title}
 					/> 
 				</ol> 
 			</div>
